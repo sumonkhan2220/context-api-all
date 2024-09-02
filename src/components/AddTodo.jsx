@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
-
+import React, { useRef, useContext } from "react";
+import { todoItemsContext } from "../store/todo-items-store";
 const AddTodo = ({ onNewItem }) => {
+  const { addNewItem } = useContext(todoItemsContext);
   const todoNameElement = useRef();
   const dueDateElement = useRef();
 
@@ -10,7 +11,7 @@ const AddTodo = ({ onNewItem }) => {
     const dueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value = "";
-    onNewItem(todoName, dueDate);
+    addNewItem(todoName, dueDate);
   };
 
   return (
